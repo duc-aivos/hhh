@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Pet Haven - Your One-Stop Pet Store</title>
+    <meta name="description" content="Pet Haven is a full-service pet store offering a range of pets, supplies, expert pet care tips and a friendly shopping experience for pet lovers." />
+    <meta name="keywords" content="pets, pet store, dogs, cats, fish, small animals, pet care, pet supplies, pet blog" />
+    <meta name="author" content="Pet Haven" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <style>
+      .gradient {
+        background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+      }
+      /* Additional custom CSS for pet images */
+      .hero-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+      }
+      .category-img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+      .blog-img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+      .cart-img {
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;">
+    <!--Nav-->
+    <nav id="header" class="fixed w-full z-30 top-0">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+        <div class="pl-4 flex items-center">
+          <a id="brandname" class="toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <!--Icon from: http://www.potlabicons.com/ -->
+            <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
+              <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
+              <path
+                class="plane-take-off"
+                d="M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z"
+              />
+            </svg>
+            PET HAVEN
+          </a>
+        </div>
+        <div class="block lg:hidden pr-4">
+          <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block py-2 px-4 font-bold no-underline" href="#">Home</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block hover:text-gray-800 hover:underline py-2 px-4" href="#shop">Shop</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block hover:text-gray-800 hover:underline py-2 px-4" href="#blog">Blog</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block hover:text-gray-800 hover:underline py-2 px-4" href="#about">About Us</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block hover:text-gray-800 hover:underline py-2 px-4" href="#contact">Contact</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block hover:text-gray-800 hover:underline py-2 px-4" href="#cart">Cart</a>
+            </li>
+          </ul>
+          <button
+            id="navAction"
+            class="mx-auto lg:mx-0 hover:underline bg-white font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+      <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+    </nav>
+
+    <!--Hero-->
+    <div class="pt-24 bg-gradient-to-r from-pink-500 to-yellow-500">
+      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <!--Left Col-->
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <p class="uppercase tracking-loose w-full text-white">Welcome to Pet Haven</p>
+          <h1 class="my-4 text-5xl font-bold leading-tight text-white">
+            Find Your Perfect Companion
+          </h1>
+          <p class="leading-normal text-2xl mb-8 text-white">
+            Explore our wide range of pets, premium pet supplies, expert pet care tips and more. Your pet’s happiness begins here!
+          </p>
+          <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Shop Now
+          </button>
+        </div>
+        <!--Right Col (Hero Image)-->
+        <div class="w-full md:w-3/5 py-6 text-center">
+          <img class="hero-img mx-auto" src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwxfHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Real life best friends" />
+        </div>
+      </div>
+    </div>
+
+    <!--Featured Pets & Products-->
+    <section id="shop" class="bg-white border-b py-8">
+      <div class="container max-w-5xl mx-auto m-8">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Featured Pets & Products
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-wrap items-center">
+          <div class="w-full md:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Handpicked Companions
+            </h3>
+            <p class="text-gray-600 mb-8">
+              At Pet Haven, we feature a selection of healthy, playful pets and top-quality supplies guaranteed to delight pet lovers. 
+              Whether you're searching for a loyal dog, a graceful cat, or a charming small animal, we have something for everyone.
+            </p>
+            <button class="hover:underline bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              Browse All Products
+            </button>
+          </div>
+          <div class="w-full md:w-1/2 p-6 text-center">
+            <img class="hero-img mx-auto" src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwyfHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="A dog and a cat laying in the grass" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Product Categories-->
+    <section class="bg-gray-100 py-8">
+      <div class="container mx-auto px-2 pt-4 pb-12">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Product Categories
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-wrap -mx-4">
+          <!-- Dogs Category -->
+          <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-8">
+            <div class="bg-white rounded shadow overflow-hidden">
+              <img class="category-img" src="https://images.unsplash.com/photo-1504595403659-9088ce801e29?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw0fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Dog category">
+              <div class="p-4">
+                <h3 class="font-bold text-xl">Dogs</h3>
+                <p class="text-gray-600 text-sm">Quality food, toys and grooming products for your best friend.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Cats Category -->
+          <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-8">
+            <div class="bg-white rounded shadow overflow-hidden">
+              <img class="category-img" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwxMHx8UGV0c3xlbnwwfHx8fDE3NTcwNTYwODh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Cat category">
+              <div class="p-4">
+                <h3 class="font-bold text-xl">Cats</h3>
+                <p class="text-gray-600 text-sm">Everything for your feline friend from cozy beds to toys.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Fish Category -->
+          <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-8">
+            <div class="bg-white rounded shadow overflow-hidden">
+              <!-- Using the "Champion" image as a placeholder for fish -->
+              <img class="category-img" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwzfHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Fish category">
+              <div class="p-4">
+                <h3 class="font-bold text-xl">Fish</h3>
+                <p class="text-gray-600 text-sm">Aquatic life and accessories to create a vibrant home aquarium.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Small Animals Category -->
+          <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-8">
+            <div class="bg-white rounded shadow overflow-hidden">
+              <img class="category-img" src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw3fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Small animals category">
+              <div class="p-4">
+                <h3 class="font-bold text-xl">Small Animals</h3>
+                <p class="text-gray-600 text-sm">Find guinea pigs, hamsters, rabbits and more adorable companions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Blog Section-->
+    <section id="blog" class="bg-white border-b py-8">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Pet Care Blog
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="no-underline hover:no-underline">
+              <img class="blog-img" src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwzfHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Champion" />
+              <div class="p-8">
+                <p class="w-full text-gray-600 text-xs md:text-sm">PET TIPS</p>
+                <div class="w-full font-bold text-xl text-gray-800">5 Essential Tips for a Happy Pet</div>
+                <p class="text-gray-800 text-base mb-5">
+                  Learn how to keep your pet healthy and happy with our expert advice on nutrition, exercise, grooming and more.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="flex-none mt-auto bg-white rounded-b overflow-hidden shadow p-6">
+            <div class="flex items-center justify-center">
+              <button class="hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="no-underline hover:no-underline">
+              <img class="blog-img" src="https://images.unsplash.com/photo-1535930749574-1399327ce78f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw2fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Pet care" />
+              <div class="p-8">
+                <p class="w-full text-gray-600 text-xs md:text-sm">HEALTH & CARE</p>
+                <div class="w-full font-bold text-xl text-gray-800">Grooming Your Pet: A Step-by-Step Guide</div>
+                <p class="text-gray-800 text-base mb-5">
+                  Discover the best grooming techniques and products to keep your pet looking and feeling its best.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="flex-none mt-auto bg-white rounded-b overflow-hidden shadow p-6">
+            <div class="flex items-center justify-center">
+              <button class="hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="no-underline hover:no-underline">
+              <img class="blog-img" src="https://images.unsplash.com/photo-1504595403659-9088ce801e29?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw0fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="PuppyHero" />
+              <div class="p-8">
+                <p class="w-full text-gray-600 text-xs md:text-sm">STORY</p>
+                <div class="w-full font-bold text-xl text-gray-800">How We Started Pet Haven</div>
+                <p class="text-gray-800 text-base mb-5">
+                  Read our story of passion for pets and learn about our commitment to quality service and care for every animal.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="flex-none mt-auto bg-white rounded-b overflow-hidden shadow p-6">
+            <div class="flex items-center justify-center">
+              <button class="hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--About Us & Contact (Combined for brevity)-->
+    <section id="about" class="bg-white border-b py-8">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-1/2 p-6">
+            <h2 class="text-5xl font-bold text-gray-800 mb-4">About Pet Haven</h2>
+            <p class="text-gray-600 mb-4">
+              Pet Haven is dedicated to bringing you the best quality pets and pet care products. Our journey began with a passion for animals and a desire to offer a friendly, trustworthy service to pet lovers everywhere.
+            </p>
+            <p class="text-gray-600">
+              We believe that every pet deserves love, care, and the best supplies available. Our team of experts is here to help guide you in creating a happy, healthy life for your furry, feathery, or scaly friends.
+            </p>
+          </div>
+          <div class="w-full md:w-1/2 p-6">
+            <h2 class="text-5xl font-bold text-gray-800 mb-4">Contact Us</h2>
+            <form id="contact" action="#" method="POST" class="bg-gray-100 p-6 rounded shadow">
+              <div class="mb-4">
+                <label class="block text-gray-700">Name</label>
+                <input class="w-full p-2 border rounded" type="text" placeholder="Your Name" required>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700">Email</label>
+                <input class="w-full p-2 border rounded" type="email" placeholder="Your Email" required>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700">Message</label>
+                <textarea class="w-full p-2 border rounded" rows="4" placeholder="Your Message" required></textarea>
+              </div>
+              <button class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-4 px-8 rounded-full hover:underline focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" type="submit">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Shopping Cart Feature-->
+    <section id="cart" class="bg-gray-100 py-8">
+      <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center">
+          Your Shopping Cart
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-center pt-12 my-12">
+          <!-- Sample Cart Item 1 -->
+          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto rounded-lg bg-white mt-4 shadow-lg">
+            <div class="flex-1 bg-white rounded-t overflow-hidden shadow">
+              <img class="cart-img" src="https://images.unsplash.com/photo-1504595403659-9088ce801e29?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw0fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Dog Toy" />
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-center">Deluxe Dog Toy</h3>
+                <p class="text-gray-600 text-center mt-2">£9.99</p>
+              </div>
+            </div>
+            <div class="flex-none bg-white rounded-b overflow-hidden shadow p-6">
+              <button class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-4 rounded-full hover:underline focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Checkout
+              </button>
+            </div>
+          </div>
+          <!-- Sample Cart Item 2 -->
+          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto rounded-lg bg-white mt-4 shadow-lg sm:mx-4">
+            <div class="flex-1 bg-white rounded-t overflow-hidden shadow">
+              <img class="cart-img" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwxMHx8UGV0c3xlbnwwfHx8fDE3NTcwNTYwODh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Cat Scratcher" />
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-center">Cat Scratcher</h3>
+                <p class="text-gray-600 text-center mt-2">£14.99</p>
+              </div>
+            </div>
+            <div class="flex-none bg-white rounded-b overflow-hidden shadow p-6">
+              <button class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-4 rounded-full hover:underline focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Checkout
+              </button>
+            </div>
+          </div>
+          <!-- Sample Cart Item 3 -->
+          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto rounded-lg bg-white mt-4 shadow-lg">
+            <div class="flex-1 bg-white rounded-t overflow-hidden shadow">
+              <img class="cart-img" src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw3fHxQZXRzfGVufDB8fHx8MTc1NzA1NjA4OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Guinea Pig Treats" />
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-center">Guinea Pig Treats</h3>
+                <p class="text-gray-600 text-center mt-2">£4.99</p>
+              </div>
+            </div>
+            <div class="flex-none bg-white rounded-b overflow-hidden shadow p-6">
+              <button class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-4 rounded-full hover:underline focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Call to Action-->
+    <section class="container mx-auto text-center py-6 mb-12">
+      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        Ready to Welcome a New Friend?
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto bg-gradient-to-r from-pink-500 to-yellow-500 w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <h3 class="my-4 text-3xl leading-tight">
+        Explore our collection and start your journey with your new best friend today!
+      </h3>
+      <button class="mx-auto lg:mx-0 hover:underline bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        Get Started
+      </button>
+    </section>
+
+    <!--Footer-->
+    <footer class="bg-white">
+      <div class="container mx-auto px-8">
+        <div class="w-full flex flex-col md:flex-row py-6">
+          <div class="flex-1 mb-6 text-black">
+            <a class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+              <!--Icon from: http://www.potlabicons.com/ -->
+              <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
+                <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
+                <path
+                  class="plane-take-off"
+                  d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
+                />
+              </svg>
+              PET HAVEN
+            </a>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Links</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">FAQ</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Help</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Support</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Legal</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Terms</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Privacy</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Social</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Facebook</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Linkedin</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Twitter</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase text-gray-500 md:mb-6">Company</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Official Blog</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#about" class="no-underline hover:underline text-gray-800 hover:text-pink-500">About Us</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#contact" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector created by freepik - www.freepik.com</a>
+    </footer>
+
+    <!-- jQuery if you need it
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  -->
+    <script>
+      var scrollpos = window.scrollY;
+      var header = document.getElementById("header");
+      var navcontent = document.getElementById("nav-content");
+      var navaction = document.getElementById("navAction");
+      var brandname = document.getElementById("brandname");
+      var toToggle = document.querySelectorAll(".toggleColour");
+
+      document.addEventListener("scroll", function () {
+        /*Apply classes for slide in bar*/
+        scrollpos = window.scrollY;
+
+        if (scrollpos > 10) {
+          header.classList.add("bg-white");
+          navaction.classList.remove("bg-white");
+          navaction.classList.add("gradient");
+          navaction.classList.remove("text-gray-800");
+          navaction.classList.add("text-white");
+          //Use to switch toggleColour colours
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-gray-800");
+            toToggle[i].classList.remove("text-white");
+          }
+          header.classList.add("shadow");
+          navcontent.classList.remove("bg-gray-100");
+          navcontent.classList.add("bg-white");
+        } else {
+          header.classList.remove("bg-white");
+          navaction.classList.remove("gradient");
+          navaction.classList.add("bg-white");
+          navaction.classList.remove("text-white");
+          navaction.classList.add("text-gray-800");
+          //Use to switch toggleColour colours
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-white");
+            toToggle[i].classList.remove("text-gray-800");
+          }
+
+          header.classList.remove("shadow");
+          navcontent.classList.remove("bg-white");
+          navcontent.classList.add("bg-gray-100");
+        }
+      });
+    </script>
+    <script>
+      /*Toggle dropdown list*/
+      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+
+      document.onclick = check;
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+          }
+        }
+      }
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
+      }
+    </script>
+  </body>
+</html>
